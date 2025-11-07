@@ -1,0 +1,320 @@
+
+ /* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;700&display=swap');
+
+/* Si quieres usar los íconos reales de Font Awesome, descomenta la siguiente línea */
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'); */
+
+:root {
+    /* Variables de Color ajustadas a la imagen */
+    --color-gris-principal: #9415b4; /* Gris del círculo */
+    --color-salmon-logo: #ff85e5; /* Color del texto del logo y la línea */
+    --color-gris-footer: #cb22ff; /* Gris oscuro del footer */
+    --color-texto-negro: #36044d;
+    --color-fondo-blanco: #ffdaf7;
+    --alto-footer: 6rem; /* Altura del footer ajustada */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--color-texto-negro);
+    background-color: var(--color-fondo-blanco);
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+#app {
+    min-height: calc(100vh - var(--alto-footer)); /* El contenido principal ocupa el resto de la altura */
+    padding-bottom: 0; 
+}
+
+/* Oculta las secciones no deseadas */
+.pagina {
+    display: none; 
+}
+
+.pagina.activa {
+    display: block; 
+}
+
+/* --------------------
+   Diseño de PÁGINA PRINCIPAL
+   -------------------- */
+#home-page {
+    min-height: calc(100vh - var(--alto-footer));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-principal {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+/* Panel Izquierdo: Círculo y Logo */
+.circulo-fondo {
+    background-color: var(--color-gris-principal);
+    width: 40%; /* Ancho ajustado */
+    min-height: calc(100vh - var(--alto-footer));
+    position: relative;
+    /* Ajuste para que parezca un círculo recortado en el lado derecho */
+    clip-path: ellipse(100% 100% at 0% 50%); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5vw; 
+    padding-right: 5vw;
+}
+
+.titulo-robot {
+    font-family: 'Fredoka One', cursive;
+    font-size: 5.5vw; /* Tamaño ligeramente ajustado */
+    line-height: 0.85;
+    margin: 0;
+    color: var(--color-salmon-logo);
+    text-shadow: 
+        -1.5px -1.5px 0 var(--color-texto-negro),  
+        1.5px -1.5px 0 var(--color-texto-negro),
+        -1.5px 1.5px 0 var(--color-texto-negro),
+        1.5px 1.5px 0 var(--color-texto-negro);
+    text-align: center;
+    position: relative; /* Para posicionar la onda */
+    z-index: 1; /* Asegura que la onda esté debajo */
+}
+
+/* Línea de Onda Debajo del Logo */
+.titulo-robot::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 1.2vw; /* Altura de la línea responsiva */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q 25 25, 50 10 T 100 10' stroke='%23E2B295' fill='none' stroke-width='3'/%3E%3C/svg%3E") no-repeat center center;
+    background-size: 100% 100%;
+    margin: 0.8vw auto 1.5vw auto; /* Márgenes ajustados */
+    position: relative;
+    top: -0.5vw; /* Levanta la onda un poco */
+    z-index: 0;
+}
+
+.nombres {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700; /* Negrita */
+    font-size: 1.3vw; 
+    margin: 0.2vw 0;
+    color: var(--color-texto-negro);
+}
+
+/* Panel Derecho: Botones */
+.botones-container {
+    width: 60%; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5vw; /* Espacio entre botones */
+    padding-left: 5vw;
+    padding-right: 12vw; /* Empuja el grid un poco hacia el centro */
+}
+
+.boton-nav {
+    background: var(--color-fondo-blanco);
+    border: 3px solid var(--color-texto-negro);
+    border-radius: 30px;
+    padding: 1.2vw 2.5vw; /* Padding ajustado */
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4vw; /* Tamaño de fuente ajustado */
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 400;
+    box-shadow: 5px 5px 0 var(--color-texto-negro); 
+    transition: transform 0.1s, box-shadow 0.1s;
+    text-align: center;
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+.comprar-btn {
+    text-decoration: underline; 
+}
+
+/* Efecto al presionar (simula el hundimiento) */
+.boton-nav:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 var(--color-texto-negro);
+}
+
+/* --------------------
+   Pie de página fijo (Footer) - AJUSTADO PARA PARECERSE MÁS A LA IMAGEN
+   -------------------- */
+.footer-imagen {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--alto-footer);
+    background-color: var(--color-gris-footer); 
+    color: var(--color-fondo-blanco);
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 0 2vw; /* Padding lateral */
+    font-size: 0.9rem;
+    z-index: 1000;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center; /* Asegura la alineación vertical */
+    padding: 0.5rem 0; /* Padding vertical para cada item */
+}
+
+.footer-item p {
+    margin: 0;
+    line-height: 1.2;
+    font-size: 0.85rem; /* Tamaño de fuente para el texto normal */
+    white-space: nowrap; /* Evita saltos de línea */
+}
+
+.contacto .info-contacto p:first-child,
+.sucursales p:first-child,
+.instagram p:first-child {
+    font-weight: bold;
+    font-size: 1rem; /* Tamaño de fuente para títulos */
+}
+
+/* Contacto (WhatsApp) */
+.contacto {
+    justify-content: flex-start; /* Alinea a la izquierda dentro de su espacio */
+    padding-left: 1.5vw;
+}
+
+.icono-whatsapp {
+    /* Si usas Font Awesome, esta clase ya tendría el icono */
+    /* Si no, usa el placeholder */
+    width: 1.5rem; /* TAMAÑO AJUSTADO */
+    height: 1.5rem; /* TAMAÑO AJUSTADO */
+    font-size: 1.5rem; /* Tamaño del icono */
+    margin-right: 0.8vw; /* Espacio entre icono y texto */
+    color: #6DE079; /* Verde de WhatsApp */
+    display: flex; /* Para centrar el placeholder */
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle; /* Alineación vertical añadida */
+}
+
+/* ESTILO AÑADIDO PARA AJUSTAR LA IMAGEN DE WHATSAPP */
+.icono-whatsapp img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Asegura que la imagen completa se vea sin recortarse */
+}
+
+/* Sucursales e Instagram */
+.sucursales, .instagram {
+    justify-content: center; /* Centra los items en el medio */
+    flex-direction: column; /* Apila el texto */
+    text-align: center;
+}
+
+.instagram {
+    padding-right: 1.5vw;
+}
+
+.handle-instagram {
+    font-size: 1.2rem !important; /* Más grande y llamativo */
+    font-weight: bold;
+    color: var(--color-salmon-logo); /* Color de destaque */
+}
+
+.icono-instagram {
+    /* Placeholder para el ícono de Instagram, si no usas Font Awesome */
+    display: none; /* Se asume que el handle es suficiente */
+}
+
+/* --------------------
+   RESPONSIVE (Básico) - Asegura que el logo se vea bien en móvil también.
+   -------------------- */
+@media (max-width: 768px) {
+    :root {
+        --alto-footer: 4.5rem; 
+    }
+
+    /* Reducir el tamaño de fuente y padding del footer en móvil */
+    .footer-imagen {
+        font-size: 0.75rem;
+        padding: 0 1vw; 
+    }
+    
+    .footer-item {
+        padding: 0.3rem 0;
+    }
+
+    .contacto .info-contacto p:first-child,
+    .sucursales p:first-child,
+    .instagram p:first-child {
+        font-size: 0.8rem; 
+    }
+
+    .footer-item p {
+        font-size: 0.7rem; 
+    }
+
+    .icono-whatsapp {
+        width: 1.2rem; /* Ajuste para móvil */
+        height: 1.2rem; /* Ajuste para móvil */
+        font-size: 1.2rem; 
+        margin-right: 0.5vw; 
+    }
+
+    /* Ajuste para la página principal */
+    .header-principal {
+        flex-direction: column; /* Apila el contenido principal */
+        align-items: flex-start;
+    }
+
+    .circulo-fondo {
+        width: 100%;
+        min-height: 50vh;
+        clip-path: ellipse(150% 100% at 50% 0%); /* Círculo en la parte superior */
+        padding-top: 10vh;
+        padding-bottom: 5vh;
+        justify-content: flex-start;
+    }
+    
+    .titulo-robot {
+        font-size: 10vw; 
+        margin-bottom: 2vw;
+    }
+
+    .titulo-robot::after {
+        height: 2vw;
+    }
+
+    .nombres {
+        font-size: 3.5vw;
+    }
+    
+    .botones-container {
+        width: 100%;
+        grid-template-columns: 1fr; /* Una columna */
+        gap: 3vw;
+        padding: 5vw 10vw;
+    }
+
+    .boton-nav {
+        font-size: 4vw;
+        padding: 3vw;
+        box-shadow: 8px 8px 0 var(--color-texto-negro);
+    }
+    
+    .boton-nav:active {
+        transform: translate(8px, 8px);
+    }
+}
