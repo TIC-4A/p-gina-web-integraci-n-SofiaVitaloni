@@ -1,17 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Si bien esta versión no cambia de página, mantengo el selector para posibles interacciones futuras
-    const botonesNav = document.querySelectorAll('.boton-nav');
-    
-    // Puedes añadir eventos aquí, como un efecto al pasar el ratón, si lo deseas.
+    // Si esta página tuviera botones interactivos o animaciones,
+    // la lógica de JavaScript iría aquí.
 
-    // Ejemplo de alerta al hacer clic en un botón:
-    botonesNav.forEach(boton => {
-        boton.addEventListener('click', (e) => {
-            const texto = e.currentTarget.textContent;
-            console.log(`Clic en botón: ${texto}`);
-            // alert(`Has hecho clic en ${texto}`);
+    // Ejemplo de alerta si se hiciera clic en un placeholder:
+    const placeholders = document.querySelectorAll('.video-placeholder, .texto-placeholder, .imagen-placeholder');
+    placeholders.forEach(placeholder => {
+        placeholder.addEventListener('click', (e) => {
+            console.log(`Clic en el área: ${e.currentTarget.textContent}`);
         });
     });
-
-    // La página principal ya está configurada como 'activa' en el HTML.
 });
